@@ -1,0 +1,28 @@
+package hw5;
+import static org.junit.Assert.assertEquals;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Iterator;
+
+import org.junit.Test;
+
+public class MarvelPathsTest{
+	
+	@Test
+	public void Testinput() throws FileNotFoundException {
+		MarvelPaths mp = new MarvelPaths();
+		mp.createNewGraph("data/empty.csv");
+		
+	}
+	
+	public void Testinput1() throws FileNotFoundException {
+		MarvelPaths mp = new MarvelPaths();
+		mp.createNewGraph("data/e2n2.csv");
+		assertEquals("Graph has wrong # of nodes", 2, mp.nodeSize());
+		assertEquals("Graph has edges", 0, mp.edgeSize());
+	}
+	
+	
+}

@@ -1,0 +1,101 @@
+package hw4;
+import java.util.*;
+
+public class graph {
+	
+	private HashMap<String,ArrayList<edge>> graph = new HashMap<String, ArrayList<edge>>();
+
+	//loop invariants in check
+	private void checkRep() 
+	{
+		if(graph == null)
+		{
+            throw new NullPointerException("graph == null");
+		}
+		if(graph.keySet() == null)
+		{
+            throw new NullPointerException("no keys");
+		}
+		
+	}
+	
+	//constructor
+	public graph() {
+		this.graph = new HashMap<String, ArrayList<edge>>();
+	}
+	
+	public boolean checkNode(String node) {
+		return graph.containsKey(node);
+	}
+	
+	
+	//adds node to graph
+	public void addNode(String node) {
+		checkRep();
+		if(node == null) {
+			throw new IllegalArgumentException("Invalid Input");
+		}
+		else {
+			if(!(graph.containsKey(node))) {
+				graph.put(node, new ArrayList<edge>());
+			}
+		}
+		checkRep();
+	}
+	
+	
+	//adds edge to graph
+	public void addEdge(String parent, String child, String label) {
+		checkRep();
+		if(parent==null || child == null || label == null) {
+			throw new IllegalArgumentException("Invalid Input");
+		}
+		if(!(graph.get(parent).contains(new edge(parent, child, label)))){
+			graph.get(parent).add(new edge(parent, child, label));
+		}
+		checkRep();
+		
+	}
+	
+	// returns an iterator that points to the keys
+	public Iterator<String> listNodes(){
+		checkRep();
+		
+		ArrayList<String> arraylist = new ArrayList<String>();
+		Iterator<String> iterator = this.graph.keySet().iterator();
+		//needs arraylist so it is not mutable in this function
+		while(iterator.hasNext()) {
+			String temp = iterator.next();
+			arraylist.add(temp);
+		}
+		return arraylist.iterator();
+	}
+	
+	public Iterator<edge> edgeItr(String parent){
+		Iterator<edge> iterator = graph.get(parent).iterator();
+		return iterator;
+	}
+	//returns an iterator that points to the children of a parent
+	public Iterator<edge> listChildren(String parent){
+		checkRep();
+		if(parent == null) {
+			return null;
+		}
+		else {
+			if(graph.get(parent) == null) {
+				return null;
+			}
+			else {
+				ArrayList<edge> childs = new ArrayList<edge>();
+				Iterator<edge> iterator = graph.get(parent).iterator();
+				while(iterator.hasNext())
+				{
+					childs.add(iterator.next());
+				}
+				return childs.iterator();
+			}
+		}
+	}
+
+	
+}

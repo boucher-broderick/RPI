@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel" value="1"/>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://submitty.cs.rpi.edu/git/s22/csci2600/hw03/bouchb4"/>
+		<item value="https://submitty.cs.rpi.edu/git/s22/csci2600/hw02/bouchb4"/>
+		<item value="https://submitty.cs.rpi.edu/git/s22/csci2600/hw01/bouchb4"/>
+		<item value="https://submitty.cs.rpi.edu/git/s22/csci2600/hw00/bouchb4"/>
+	</list>
+	<list key="EGit.KnownHosts">
+		<item value="git.eclipse.org"/>
+		<item value="github.com"/>
+		<item value="bitbucket.org"/>
+		<item value="submitty.cs.rpi.edu"/>
+	</list>
+	<list key="CommitDialog.authorValues">
+		<item value="lil-uzi-bean &lt;95665786+lil-uzi-bean@users.noreply.github.com&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="lil-uzi-bean &lt;95665786+lil-uzi-bean@users.noreply.github.com&gt;"/>
+	</list>
+	<section name="GitImportWizard">
+	</section>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="500,500"/>
+		<item key="STAGING_SASH_FORM_WEIGHT" value="500,500"/>
+		<item key="sortItemState" value="true"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\Bouchb4\OneDrive\Desktop\POS\git\bouchb4\.git">
+			<item value="empty"/>
+		</list>
+		<list key="C:\Users\Bouchb4\OneDrive\Desktop\POS\Homework3\bouchb4\.git">
+			<item value="false"/>
+			<item value="lil-uzi-bean &lt;95665786+lil-uzi-bean@users.noreply.github.com&gt;"/>
+			<item value="sdf"/>
+			<item value="lil-uzi-bean &lt;95665786+lil-uzi-bean@users.noreply.github.com&gt;"/>
+			<item value="a7c8c1f05b7dd9e770fb2077bf6dc3fa5e6dff1d"/>
+			<item value="0"/>
+			<item value="false"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="534"/>
+		<item key="DIALOG_Y_ORIGIN" value="142"/>
+		<item key="DIALOG_WIDTH" value="875"/>
+		<item key="DIALOG_HEIGHT" value="503"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<list key="sashWeights">
+			<item value="600"/>
+			<item value="400"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.fetch.FetchResultDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="534"/>
+		<item key="DIALOG_Y_ORIGIN" value="161"/>
+		<item key="DIALOG_WIDTH" value="875"/>
+		<item key="DIALOG_HEIGHT" value="541"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="746"/>
+		<item key="DIALOG_Y_ORIGIN" value="337"/>
+	</section>
+</section>

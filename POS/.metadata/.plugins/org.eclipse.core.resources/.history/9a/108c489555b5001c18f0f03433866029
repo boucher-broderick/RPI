@@ -1,0 +1,166 @@
+package hw5;
+
+import hw4.graph;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Set;
+
+import hw4.edge;
+
+
+public class MarvelPaths {
+	
+
+	private graph graph;
+	private int node_size;
+	private int edge_size;
+	
+	public MarvelPaths() {
+		node_size=0;
+		edge_size=0;
+		graph = new graph();
+	}
+	
+	
+	//returns a graph with the added data
+	public void createNewGraph(String file) {
+		Map<String, Set<String>> charsInBooks = new HashMap<String, Set<String>>();
+		Set<String> chars = new HashSet<String>();
+		try {
+			MarvelParser.readData(file, charsInBooks, chars);
+			for( String c : chars) {
+				graph.addNode(c);
+				node_size++;
+			}
+			Iterator<String> iterator = charsInBooks.keySet().iterator();
+			while(iterator.hasNext()) {
+				String temp = iterator.next();
+				Set<String> one = new HashSet<String>();
+				Set<String> two = new HashSet<String>();
+				one=charsInBooks.get(temp);
+				two=charsInBooks.get(temp);
+				for(String first: one) {
+					for(String second: two) {
+						if(!(first.equals(second))) { //adds both edges
+							graph.addEdge(first, second, temp);
+							graph.addEdge(second, first, temp);
+							edge_size+=2;
+						}
+					}
+				}
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+
+	
+	public String findPath(String node1, String node2){
+		
+		boolean check_n1 = graph.checkNode(node1);
+		boolean check_n2 = graph.checkNode(node2);
+		if(!(check_n1) && !(check_n2)) {
+			return "unknown char "+node1+ "\n"+"unknown char "+node2;
+		}
+		else if(!(check_n1)) {
+			return "unknown char "+node1;
+		}
+		else if(!(check_n2)) {
+			return "unknown char "+node2;
+		}
+		String output = "path from " + node1 + " to " + node2 + ":\n";
+		LinkedList<edge> route = new LinkedList<edge>();
+		PriorityQueue<String> Q = new PriorityQueue<String>();
+		Map<String, LinkedList<edge>> visited = new HashMap<String, LinkedList<edge>>();
+		boolean path = false;
+
+		Q.add(node1);
+		visited.put(node1, new LinkedList<edge>());
+		
+		while(Q.size() != 0)
+		{
+			String current_char = Q.poll();
+			if( current_char.equals(node2) )
+			{
+				route = visited.get(current_char);
+				path = true;
+				break;
+			}
+			boolean check = false;
+			Iterator<edge> edgeItr = graph.edgeItr(current_char);
+			while( edgeItr.hasNext() )
+			{
+				edge edg = edgeItr.next();
+				
+				if( current_char.equals(edg.getParent()) )
+				{
+					check = true;
+					String nextNode = edg.getChild();
+					LinkedList<edge> currPath = visited.get(current_char);
+					LinkedList<edge> nextPath = new LinkedList<edge>(currPath);
+					nextPath.addLast(edg);
+					if( !visited.containsKey(nextNode) )
+					{
+						visited.put(nextNode, nextPath);
+						Q.add(nextNode);
+					}
+					else
+					{
+						if( visited.get(nextNode).size() > nextPath.size() )
+						{
+							visited.put(nextNode, nextPath);
+						}
+					}
+				} 
+				else if( !current_char.equals(edg.getParent()) && check )
+				{
+					check = false;
+					break;
+				}
+			}
+		}
+		
+		if(!path){
+			return output + "no path found\n";
+		}
+		for(edge e : route) {
+			String line = e.getParent() + " to " + e.getChild() + " via " + e.getLabel();
+			output += line + "\n";
+		}
+		return output;
+		
+	}
+	
+	public int nodeSize() {
+		return node_size;
+	}
+	
+	public int edgeSize() {
+		return edge_size;
+	}
+	
+	
+	public static void main(String[] arg) {
+		String file = arg[0];
+		MarvelPaths mp = new MarvelPaths();
+			mp.createNewGraph(file);
+			
+			System.out.print(mp.findPath("PETERS, SHANA TOC", "SEERESS"));
+	}
+	
+}
+
+

@@ -1,0 +1,42 @@
+package hw4;
+
+
+public class edge{
+	
+	private String Parent;
+	private String Child;
+	private String Label;
+	
+	//constructor
+	public edge(String parent, String child, String label) {
+		if(parent == null || child == null || label == null) {
+			throw new IllegalArgumentException("Invalid input");
+		}
+		else {
+			Parent=parent;
+			Child=child;
+			Label=label;
+		}
+	}
+	
+	public String getParent() {
+		return Parent;
+	}
+	public String getChild() {
+		return Child;
+	}
+	public String getLabel() {
+		return Label;
+	}
+	
+	//used for listchild
+	public String print() {
+		return getChild() + "(" + getLabel() + ")";
+	}
+	
+	public int compareTo(edge one, edge two) {
+		String sone = one.getChild();
+		String stwo = two.getChild();
+		return sone.compareTo(stwo);
+	}
+}

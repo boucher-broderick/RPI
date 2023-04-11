@@ -1,0 +1,71 @@
+package hw5;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Iterator;
+
+import org.junit.Test;
+
+public class MarvelPathsTest{
+	
+	@Test
+	public void Testinput() throws FileNotFoundException {
+		MarvelPaths mp = new MarvelPaths();
+		mp.createNewGraph("data/empty.csv");
+		assertEquals("Graph has wrong # of nodes", 0, mp.nodeSize());
+		assertEquals("Graph has edges", 0, mp.edgeSize());
+	}
+	
+	@Test
+	public void Testinput1() throws FileNotFoundException {
+		MarvelPaths mp = new MarvelPaths();
+		mp.createNewGraph("data/e2n2.csv");
+		assertEquals("Graph has wrong # of nodes", 2, mp.nodeSize());
+		assertEquals("Graph has edges", 0, mp.edgeSize());
+	}
+	
+	@Test
+	public void InvalidInput() throws FileNotFoundException {
+		MarvelPaths mp = new MarvelPaths();
+		mp.createNewGraph("data/simple.csv");
+		assertTrue(mp.findPath("BATMAN", "HUMAN ROBOT").equals("unknown char BATMAN"));
+		assertTrue(mp.findPath("BATMAN", "BILLY").equals("unknown char BATMAN\nunknown char BILLY"));
+		assertTrue(mp.findPath("HUMAN ROBOT", "BILLY").equals("unknown char BILLY"));
+		assertTrue(mp.findPath("BATMAN", "BATMAN").equals("unknown char BATMAN\nunknown char BATMAN"));
+	}
+	
+
+
+	@Test
+	public void validSimple() throws FileNotFoundException {
+		MarvelPaths mp = new MarvelPaths();
+		mp.createNewGraph("data/simple.csv");
+		assertTrue(mp.findPath("HUMAN ROBOT", "HUMAN ROBOT").equals("path from HUMAN ROBOT to HUMAN ROBOT:\n"));
+		assertTrue(mp.findPath("HUMAN ROBOT", "ANT MAN").equals("path from HUMAN ROBOT to ANT MAN:\n"
+				+ "HUMAN ROBOT to MARVEL BOY via ABC\n"
+				+ "MARVEL BOY to ANT MAN via AVF\n"));
+	}
+	@Test
+	public void alphabetSimple() throws FileNotFoundException {
+		MarvelPaths mp = new MarvelPaths();
+		mp.createNewGraph("data/simpleAlpha.csv");
+		assertTrue(mp.findPath("HUMAN ROBOT", "BILLY BOB").equals("path from HUMAN ROBOT to BILLY BOB:\n"
+				+ "HUMAN ROBOT to ANT MAN via ABC\n"
+				+ "ANT MAN to BILLY BOB via AVF\n"));
+	}
+	@Test
+	public void NOpath() throws FileNotFoundException {
+		MarvelPaths mp = new MarvelPaths();
+		mp.createNewGraph("data/NOpath.csv");
+		assertTrue(mp.findPath("HUMAN ROBOT", "BILLY BOB").equals("path from HUMAN ROBOT to BILLY BOB:\nno path found\\n"));
+
+	}
+
+	
+	
+	
+	
+}

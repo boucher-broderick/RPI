@@ -1,0 +1,42 @@
+package hw5;
+
+import hw4.graph;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import hw4.edge;
+
+
+public class MarvelPaths {
+	
+
+	private graph graph;
+	
+	public MarvelPaths() {
+		graph = new graph();
+	}
+	
+	public void createGraph(String file) {
+		Map<String, Set<String>> charsInBooks = new HashMap<String, Set<String>>();
+		Set<String> chars = new HashSet<String>();
+		try {
+			MarvelParser.readData(file, charsInBooks, chars);
+			for( String c : chars) {
+				graph.addNode(c);
+			}
+			
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+}

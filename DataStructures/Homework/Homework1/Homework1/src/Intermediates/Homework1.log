@@ -1,0 +1,7 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(476,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(477,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  main.cpp
+C:\Users\bouch\OneDrive\Desktop\DataStructures\Homework\Homework1\Homework1\src\main.cpp(123,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\bouch\OneDrive\Desktop\DataStructures\Homework\Homework1\Homework1\src\main.cpp(135,31): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  LINK : .\src\Homework1.exe not found or not built by the last incremental link; performing full link
+  Homework1.vcxproj -> C:\Users\bouch\OneDrive\Desktop\DataStructures\Homework\Homework1\Homework1\src\Homework1.exe
